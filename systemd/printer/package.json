@@ -1,0 +1,12 @@
+{
+  "name": "printer",
+  "version": "1.0.0",
+  "description": "Print service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Heds Simons <heds@balena.io>",
+  "license": "ISC",
+  "private": "true"
+}
