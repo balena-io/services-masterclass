@@ -1,0 +1,12 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
+
+# Install build essential tools to include GCC
+RUN install_packages build-essential
+
+# Compile the executable from some C source
+WORKDIR /usr/src/app
+COPY hello-world.c ./
+RUN gcc -static -o hello-world hello-world.c
+
+# Start the executable!
+CMD ["/usr/src/app/hello-world"]

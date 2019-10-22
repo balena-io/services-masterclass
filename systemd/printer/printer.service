@@ -1,0 +1,12 @@
+[Unit]
+Description=printer
+
+[Service]
+StandardOutput=journal+console
+StandardError=journal+console
+WorkingDirectory=/usr/src/app
+ExecStart=/usr/local/bin/npm start
+Restart=always
+
+[Install]
+WantedBy=basic.target
