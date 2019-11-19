@@ -10,7 +10,7 @@ the following masterclasses:
 * [balena CLI Masterclass](https://github.com/balena-io-projects/balena-cli-masterclass)
 
 **Masterclass Type:** Core
-**Maximum Expected Time To Complete:**
+**Maximum Expected Time To Complete:** 120 minutes
 
 # Introduction
 
@@ -74,7 +74,7 @@ balenaEngine on how to initialise and configure the service. As such, an image
 is essentially a self-enclosed Linux filesystem with everything required for
 running an instance of Linux, except for the kernel.
 
-Images can specified as an `image` tag, be produced by a variety of sources
+Images specified as an `image` tag can be produced by a variety of sources
 including locally on a developer's machine, by pushing in localmode to a balena
 device or by the balena builders, which use Dockerfiles to determine what to
 include in the image. The following exercises all use the balena builder to
@@ -86,7 +86,7 @@ information on Dockerfiles.
 ### 1.2 Service Containers
 
 When a service container is created, balenaEngine uses a service image as a
-'template' for that container, creating a instance of a filesystem containing
+'template' for that container, creating an instance of a filesystem containing
 all of the files from the image, as well as using the metadata associated with
 it for configuration.
 
@@ -639,7 +639,7 @@ app.get('/backend_data', (_req, res) => {
     });
 });
 ```
-Each service can be referenced as a host by it's service name by any other
+Each service can be referenced as a host by its service name by any other
 service on the same bridge. For this reason, an HTTP request to `backend`
 from the `frontend` service will resolve to the correct internal IP address
 for the `backend` service.
@@ -734,7 +734,7 @@ init process. There's actually already a suitable shell script for this, in
 ensures that console output does not close on script exit, and then executes
 `systemd` to act as the init process. We'll copy this entry script into the
 service image and then set it as the service entrypoint. Add the following to
-then end of what you've already added to
+the end of what you've already added to
 `$BALENA_SERVICES_MASTERCLASS/systemd/printer/Dockerfile.template`:
 ```
 # Copy our systemd entrypoint script and ensure it's used
@@ -921,7 +921,7 @@ the definition of the `printer` service for the
     build: ./printer
 ```
 The immediately obvious issue here is that we've set this to be a privileged
-service. Why? Because `systemd` actually requires several capabilites and mount
+service. Why? Because `systemd` actually requires several capabilities and mount
 points that otherwise wouldn't be available. However, running a service as
 privileged just because you need `systemd` inside it is not a very satisfactory
 solution. So, what we'll do instead is now make some changes to the service
@@ -1074,7 +1074,7 @@ problem of increasing the size of a service image where, for example, source
 code used to build a required executable for the service is included but never
 used in the running service container.
 
-Multi-stage builds offers the ability for a user to define one or more images
+Multi-stage builds offer the ability for a user to define one or more images
 which include all of the tools and code needed to build an executable, and then
 define a final image which copies that executable into it, without any of
 the dependencies required to build it, thus creating a far smaller service
@@ -1112,7 +1112,7 @@ CMD ["/usr/src/app/hello-world"]
 This uses a Debian Buster base image and installs the appropriate build tools
 (compiler, linker, headers, etc.) to build the small `hello-world` programme.
 Note that we're building a static executable here, without any dependencies
-on shared libraries. This makes the final `hello-world` exectuble larger than
+on shared libraries. This makes the final `hello-world` executable larger than
 it otherwise would be, but it is completely self-contained.
 
 Let's push our application code to the builders and deploy to the device:
@@ -1501,7 +1501,7 @@ COPY --from=build /usr/src/app/hello-world ./
 # Start the executable!
 CMD ["/usr/src/app/hello-world"]
 ```
-We've now definied a second image that will be used as the actual service. The
+We've now defined a second image that will be used as the actual service. The
 final image in a Dockerfile, defined by `FROM`, will always be the image used
 as the service. As you can see, we copy the compiled executable from the
 build image, referenced by the `--from=build` switch, into the final service
@@ -1587,7 +1587,7 @@ $ balena ssh 1234567
 root@1234567:~# balena images | grep registry2
 registry2.balena-cloud.com/v2/9786f6bfe803b9ae6643a54a52123457   <none>              5d0de84fe0f7        2 minutes ago       39.9MB
 ```
-Now our service is only 39.9MB in size, as oppposed to the 289MB it was
+Now our service is only 39.9MB in size, as opposed to the 289MB it was
 originally, over seven times smaller!
 
 Using multi-stage builds when building services that need to do their own
@@ -1595,11 +1595,11 @@ packaging and building of components can create a huge space saving that
 allows you to add more services than would otherwise be possible.
 
 There's more information on
-[mulit-stage builds here](https://docs.docker.com/develop/develop-images/multistage-build/).
+[multi-stage builds here](https://docs.docker.com/develop/develop-images/multistage-build/).
 
 # Conclusion
 
-In this masterclass, you've learnt how to balena services are defined, both
+In this masterclass, you've learnt how balena services are defined, both
 as single service and multicontainer applications, as well as methodologies
 that are associated with them. You should now be confident enough to:
 * Create single service and multicontainer applications
