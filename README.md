@@ -687,7 +687,7 @@ for more details, as well as the
     to determine which processes should be executed, and in what order.
 
 Most services are designed to run a single executable, and with the advent of
-multicontainer applications this allowed an application to container many
+multicontainer applications this allowed an application to contain many
 services, each of which was responsible for a portion of the whole. Whilst this
 is the preferred method of operation for applications, there are times where
 several processes may be required to run in unison within a single service.
