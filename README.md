@@ -630,7 +630,6 @@ Now add the following to the
 ```
 app.get('/backend_data', (_req, res) => {
     request('http://backend:1234/data', (err, data) => {
-        console.log(data);
         if (err) {
             res.send(`Error: ${err}\n`).status(500);
         } else {
