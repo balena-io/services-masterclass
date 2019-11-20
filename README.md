@@ -643,6 +643,11 @@ service on the same bridge. For this reason, an HTTP request to `backend`
 from the `frontend` service will resolve to the correct internal IP address
 for the `backend` service.
 
+Push to the application again:
+```
+$ balena push MulticontainerServices
+```
+
 Let's try using the same endpoints as before to request some HTTP data from
 both the `frontend` and `backend` services:
 ```
