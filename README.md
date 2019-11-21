@@ -630,7 +630,6 @@ Now add the following to the
 ```
 app.get('/backend_data', (_req, res) => {
     request('http://backend:1234/data', (err, data) => {
-        console.log(data);
         if (err) {
             res.send(`Error: ${err}\n`).status(500);
         } else {
@@ -643,6 +642,11 @@ Each service can be referenced as a host by its service name by any other
 service on the same bridge. For this reason, an HTTP request to `backend`
 from the `frontend` service will resolve to the correct internal IP address
 for the `backend` service.
+
+Push to the application again:
+```
+$ balena push MulticontainerServices
+```
 
 Let's try using the same endpoints as before to request some HTTP data from
 both the `frontend` and `backend` services:
@@ -683,7 +687,7 @@ for more details, as well as the
     to determine which processes should be executed, and in what order.
 
 Most services are designed to run a single executable, and with the advent of
-multicontainer applications this allowed an application to container many
+multicontainer applications this allowed an application to contain many
 services, each of which was responsible for a portion of the whole. Whilst this
 is the preferred method of operation for applications, there are times where
 several processes may be required to run in unison within a single service.
