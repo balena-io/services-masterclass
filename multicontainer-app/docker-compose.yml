@@ -3,5 +3,3 @@ services:
   frontend:
     build: ./frontend
     network_mode: host
-  backend:
-    build: ./backend

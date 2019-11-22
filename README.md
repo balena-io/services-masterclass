@@ -1,6 +1,9 @@
 balena Services Masterclass
 ===========================
 
+**Masterclass Type:** Core
+**Maximum Expected Time To Complete:** 120 minutes
+
 # Prerequisite Classes
 
 This masterclass builds upon knowledge that has been taught in previous classes.
@@ -8,9 +11,6 @@ To gain the most from this masterclass, we recommend that you first undertake
 the following masterclasses:
 
 * [balena CLI Masterclass](https://github.com/balena-io-projects/balena-cli-masterclass)
-
-**Masterclass Type:** Core
-**Maximum Expected Time To Complete:** 120 minutes
 
 # Introduction
 
@@ -68,9 +68,9 @@ container to ensure that data exists across instances of the images.
 
 ### 1.1 Service Images
 
-Service images are the basis for any service. They comprise the binaries and
-data for running services, but they also contain metadata that informs
-balenaEngine on how to initialise and configure the service. As such, an image
+Service images are the basis for any service. They are comprised of the binaries
+and data for running services, but they also contain metadata that informs
+balenaEngine how to initialise and configure the service. As such, an image
 is essentially a self-enclosed Linux filesystem with everything required for
 running an instance of Linux, except for the kernel.
 
@@ -90,8 +90,8 @@ When a service container is created, balenaEngine uses a service image as a
 all of the files from the image, as well as using the metadata associated with
 it for configuration.
 
-As such, service containers are writable allowing data to be written and read
-from any directory within that service on these locally created filesystem
+Service containers are writable, allowing data to be written and read
+from any directory within that service on its locally created filesystem
 layers. However, these layers only exist for the lifespan of the container.
 Containers are recreated for multiple reasons. These can include newer versions
 of a service image being downloaded, alterations to environment variables names
@@ -103,7 +103,7 @@ therefore acceptable use, but any data that is required to persist across
 container recreation should be stored in persistent volumes.
 
 Note that service recreation is *not* the same as restarting. Restarting a
-service does not require it's recreation, and implies that nothing has changed
+service does not require its recreation, and implies that nothing has changed
 in the configuration requirements of the service container. However, it can
 be tricky to determine when a service might be recreated or restarted
 (note there is currently an issue with the Supervisor where the
@@ -326,7 +326,7 @@ accordingly.
 
 ### 2.3 Persistent Data
 
-In a single service application, permanent data can be stored in the `/data/`
+In a single service application, permanent data can be stored in the `/data`
 directory. Change the `CMD` line in the `Dockerfile.template` to:
 ```
 CMD ["/bin/bash", "-c", "date >> /data/datestamps; sleep infinity"]
@@ -567,7 +567,7 @@ There are two main types of networking supported by balenaEngine, `host` and
 
 This means a couple of things when developing applications. Any service that
 uses `host` networking does not have to explicitly define ports for traffic
-ingress, and a service can bind to all interface and expect incoming traffic
+ingress, and a service can bind to all interfaces and expect incoming traffic
 to the host. Single service applications *always* use `host` networking.
 
 By contrast, `bridge` networking essentially isolates all services from the
@@ -593,11 +593,11 @@ then pass it to an external query.
 
 Here's a diagram showing what's currently happens with network traffic:
 
-![host and bridged network diagram](HostAndBridged.png)
+![host and bridged network diagram](resources/HostAndBridged.png)
 
 And here's a diagram showing what we want to happen:
 
-![bridged network diagram](Bridged.png)
+![bridged network diagram](resources/Bridged.png)
 
 In short, we want to ensure that the `backend` service is not reachable from
 any component that isn't connected to it via the same bridge, and that only
@@ -621,9 +621,9 @@ Modify the services section of the `docker-compose.yml` file to the following:
 ```
 The `expose` keyword exposes specified network ports on the `backend` component
 only to services on the same bridge (in this case `frontend`). This is not
-strictly required because in current versions of balenaEngine (and Docker) this
-behaviour is the default for bridged networks, but for our purposes it
-reinforces the idea of this behaviour.
+strictly required because in current versions of balenaEngine (and Docker)
+services on the same bridge have access to all other services ports, but for our
+purposes it reinforces the idea of this behaviour.
 
 Now add the following to the
 `$BALENA_SERVICES_MASTERCLASS/multicontainer-app/frontend/index.js` file:
@@ -677,7 +677,7 @@ networks (see
 [here](https://docs.docker.com/compose/compose-file/compose-file-v2/#ipv4_address-ipv6_address))
 for more details, as well as the
 [`aliases`](https://docs.docker.com/compose/compose-file/compose-file-v2/#aliases)
-.
+keyword for providing alias names for services (including FQDNs).
 
 ## 5. Running `systemd` in a Service
 
@@ -729,16 +729,17 @@ RUN systemctl mask \
     graphical.target
 ```
 This installs `systemd` as well as `dbus` (which `systemd` requires) together
-into a suitable Debian base image and then masks services that do should not be
+using a suitable Debian base image and then masks services that do should not be
 run inside a container.
 
 Now we need to use a suitable entry point that will execute `systemd` as the
 init process. There's actually already a suitable shell script for this, in
-`$BALENA_SERVICES_MASTERCLASS/systemd/printer/entry.sh`. This entry essentially
+`$BALENA_SERVICES_MASTERCLASS/systemd/printer/entry.sh`. This entry script
 ensures that console output does not close on script exit, and then executes
-`systemd` to act as the init process. We'll copy this entry script into the
-service image and then set it as the service entrypoint. Add the following to
-the end of what you've already added to
+`systemd` to act as the init process (via the use of `exec`, which ensures that
+it runs as PID 1). We'll copy this entry script into the service image and then
+set it as the service entrypoint. Add the following to the end of what you've
+already added to
 `$BALENA_SERVICES_MASTERCLASS/systemd/printer/Dockerfile.template`:
 ```
 # Copy our systemd entrypoint script and ensure it's used
@@ -1081,7 +1082,7 @@ used in the running service container.
 Multi-stage builds offer the ability for a user to define one or more images
 which include all of the tools and code needed to build an executable, and then
 define a final image which copies that executable into it, without any of
-the dependencies required to build it, thus creating a far smaller service
+the dependencies required to build it. This results in a far smaller service
 image.
 
 Change directory to the `multi-stage` directory in the root of this masterclass
@@ -1472,15 +1473,15 @@ carrying out compilation and building of packages from source, if you're trying
 to run a very slimline service, there are better choices. What we could do is
 use a very small Alpine Linux base image for our service, and just copy our
 standalone `hello-world` executable into it instead (which is why we statically
-linked it!).
+linked it).
 
 Multi-stage builds allow you to use one base image as the basis for building all
 your code, and another base image to actually run as an application's service.
-To do this, we add a few parameters to the `FROM` instructions to essentially
-give them a name, and then use the `--from` switches to the `COPY` instruction
-to copy files from one image to another. By doing this, we can build our
-executable in an image that includes all the tools we need to do so, then copy
-that executable into a different, smaller image that will act as our service.
+To do this, we add a few parameters to the `FROM` instructions to give them a
+name, and then use the `--from` switches to the `COPY` instruction to copy files
+from one image to another. By doing this, we can build our executable in an
+image that includes all the tools we need to do so, then copy that executable
+into a different, smaller image that will act as our service.
 
 Modify the `Dockerfile.template` initial `FROM` line from:
 ```
