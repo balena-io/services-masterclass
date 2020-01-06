@@ -10,7 +10,7 @@ This masterclass builds upon knowledge that has been taught in previous classes.
 To gain the most from this masterclass, we recommend that you first undertake
 the following masterclasses:
 
-* [balena CLI Masterclass](https://github.com/balena-io-projects/balena-cli-masterclass)
+* [balena CLI Masterclass](https://github.com/balena-io/balena-cli-masterclass)
 
 # Introduction
 
