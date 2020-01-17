@@ -1,8 +1,8 @@
 balena Services Masterclass
 ===========================
 
-**Masterclass Type:** Core
-**Maximum Expected Time To Complete:** 120 minutes
++ **Masterclass Type:** Core
++ **Maximum Expected Time To Complete:** 120 minutes
 
 # Prerequisite Classes
 
@@ -70,7 +70,7 @@ container to ensure that data exists across instances of the images.
 
 Service images are the basis for any service. They are comprised of the binaries
 and data for running services, but they also contain metadata that informs
-balenaEngine how to initialise and configure the service. As such, an image
+balenaEngine how to initialize and configure the service. As such, an image
 is essentially a self-enclosed Linux filesystem with everything required for
 running an instance of Linux, except for the kernel.
 
@@ -623,7 +623,7 @@ The `expose` keyword exposes specified network ports on the `backend` component
 only to services on the same bridge (in this case `frontend`). This is not
 strictly required because in current versions of balenaEngine (and Docker)
 services on the same bridge have access to all other services ports, but for our
-purposes it reinforces the idea of this behaviour.
+purposes it reinforces the idea of this behavior.
 
 Now add the following to the
 `$BALENA_SERVICES_MASTERCLASS/multicontainer-app/frontend/index.js` file:
@@ -667,7 +667,7 @@ Backend data says: 2019-10-09T11:35:44.756Z
 ```
 
 The balena Supervisor also supports the creation of multiple bridge networks,
-allowing you to compartmentalise further (so that some services exist in only
+allowing you to compartmentalize further (so that some services exist in only
 one defined network, whereas others might be able to communicate in many).
 There's a good section on this in the Docker
 [networking guide](https://docs.docker.com/compose/networking/#specify-custom-networks).
@@ -1115,7 +1115,7 @@ RUN gcc -static -o hello-world hello-world.c
 CMD ["/usr/src/app/hello-world"]
 ```
 This uses a Debian Buster base image and installs the appropriate build tools
-(compiler, linker, headers, etc.) to build the small `hello-world` programme.
+(compiler, linker, headers, etc.) to build the small `hello-world` program.
 Note that we're building a static executable here, without any dependencies
 on shared libraries. This makes the final `hello-world` executable larger than
 it otherwise would be, but it is completely self-contained.
@@ -1457,7 +1457,7 @@ $ balena push Multistage
 			             <'
 ```
 As you can see, a *lot* of dependencies were installed to be able to build
-our executable programme.
+our executable program.
 
 Now wait for the device to download and run the application, and then SSH into
 the device. We want to see how big our service image, which is just printing
@@ -1604,7 +1604,7 @@ There's more information on
 
 # Conclusion
 
-In this masterclass, you've learnt how balena services are defined, both
+In this masterclass, you've learned how balena services are defined, both
 as single service and multicontainer applications, as well as methodologies
 that are associated with them. You should now be confident enough to:
 * Create single service and multicontainer applications
