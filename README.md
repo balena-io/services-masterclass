@@ -820,6 +820,7 @@ We're now ready to push the multicontainer application for running `systemd` to
 your application:
 
 ```shell
+$ cd $BALENA_SERVICES_MASTERCLASS/systemd
 $ balena push systemd
 balena push systemd --nocache
 [Info]     Starting build for systemd, user heds
@@ -987,7 +988,7 @@ a running, non-exiting `systemd`-based service container.
 
 There is a problem with how we're running our container, though. Have a look at
 the definition of the `printer` service for the
-`$BALENA_SERVICES_MASTERCLASS/systemd/printer/docker-compose.yml` file:
+`$BALENA_SERVICES_MASTERCLASS/systemd/docker-compose.yml` file:
 
 ```yaml
   printer:
