@@ -714,7 +714,7 @@ curl: (7) Failed to connect to 192.168.1.167 port 1234: Connection refused
 
 You can see we are no longer able to talk to request data from the `backend`
 service, as it's not allowing incoming data outside of the bridge network it
-exists on. However, if we now request data from the `/data_backend` endpoint
+exists on. However, if we now request data from the `/backend_data` endpoint
 on the `front` service, we'll see it uses data it requests from the `backend`
 service in the same bridge:
 
