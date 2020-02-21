@@ -27,6 +27,11 @@ common uses and some advanced techniques.
 
 It is assumed that the reader has access to the following:
 
+* A locally cloned copy of this repository
+	[Balena Services Masterclass](https://github.com/balena-io/services-masterclass).
+	Either:
+  * `git clone https://github.com/balena-io/services-masterclass.git`
+  * Download ZIP file (from 'Clone or download'->'Download ZIP') and then unzip it to a suitable directory
 * A balena supported device, such as a [balenaFin 1.1](https://store.balena.io/collections/developer-kit/products/balenafin-v1-1-0-developer-kit),
 	[Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 	or [Intel NUC](https://www.intel.co.uk/content/www/uk/en/products/boards-kits/nuc.html). If you don't have a device, you can emulate an Intel NUC by
