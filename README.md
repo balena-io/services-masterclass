@@ -36,7 +36,7 @@ It is assumed that the reader has access to the following:
 	[Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 	or [Intel NUC](https://www.intel.co.uk/content/www/uk/en/products/boards-kits/nuc.html). If you don't have a device, you can emulate an Intel NUC by
 	installing VirtualBox and following [this guide](https://www.balena.io/blog/no-hardware-use-virtualbox/)
-* A suitable text editor for developing code on your development platform (eg.
+* A suitable text editor for developing code on your development platform (e.g.
     [Visual Code](https://code.visualstudio.com/))
 * A suitable shell environment for command execution (such as `bash`)
 * A [balenaCloud](https://www.balena.io/) account
@@ -68,20 +68,20 @@ associated with them) to determine how to create those services as containers,
 which form executable instances of an image.
 
 Additionally, volumes (persistent data stores) can be bound to an executable
-container to ensure that data exists across instances of the images.
+container to ensure that data exists across the service's lifespan.
 
 #### 1.1 Service Images
 
 Service images are the basis for any service. They are comprised of the binaries
 and data for running services, but they also contain metadata that informs
 balenaEngine how to initialize and configure the service. As such, an image
-is essentially a self-enclosed Linux filesystem with everything required for
-running an instance of Linux, except for the kernel.
+is essentially a self-contained GNU/Linux filesystem with everything required for
+running an instance of GNU/Linux, except for the kernel.
 
 Images specified as an `image` tag can be produced by a variety of sources
 including locally on a developer's machine, by pushing in localmode to a balena
 device or by the balena builders, which use Dockerfiles to determine what to
-include in the image. The following exercises all use the balena builder to
+include in the image. The following exercises all use the balenaCloud builder to
 build images.
 
 See [here](https://docs.docker.com/engine/reference/builder/) for more
@@ -110,9 +110,10 @@ Note that service recreation is *not* the same as restarting. Restarting a
 service does not require its recreation, and implies that nothing has changed
 in the configuration requirements of the service container. However, it can
 be tricky to determine when a service might be recreated or restarted
-(note there is currently an issue with the Supervisor where the
-`/v2/applications/:appId/restart-service` endpoint actually recreates the
-service container rather than restarting it).
+(note there is currently
+[an issue](https://github.com/balena-io/balena-supervisor/issues/1116) with the
+Supervisor where the `/v2/applications/:appId/restart-service` endpoint actually
+recreates the service container rather than restarting it).
 
 #### 1.3 Service Volumes
 
@@ -122,7 +123,7 @@ on a specific path, and are stored on the host filesystem without any
 sort of diff mechanism (that is, any file hierarchy data written to the volume
 is always available in that hierarchy).
 
-For single service applications (ie. non-multicontainer applications without
+For single service applications (e.g. non-multicontainer applications without
 a `docker-compose` manifest), there is a default persistent volume bound to
 the `/data` directory in the service. This path can always be considered
 persistent.
@@ -157,14 +158,14 @@ service is required).
 #### 2.1 Building and Deploying a Single Service Application
 
 For convenience, export a variable to point to the root of this masterclass
-repository, as we'll use this for the rest of the exercises, eg:
+repository, as we'll use this for the rest of the exercises, e.g.:
 
 ```shell
 $ export BALENA_SERVICES_MASTERCLASS=~/services-masterclass
 ```
 
 Now change directory to the `single-service-app` directory in the root of this
-masterclass repository, eg:
+masterclass repository, e.g.:
 
 ```shell
 $ cd $BALENA_SERVICES_MASTERCLASS/single-service-app
@@ -236,8 +237,9 @@ There's a fairly common misconception that a service will run once and then
 stop. This is in fact not the case, and most service containers have a lifespan
 that is only as long as it takes to execute the `CMD` instruction in their
 associated Dockerfile (there are exceptions to this rule, but it's usually down
-to the type of `init` system being used, see the 'Running systemd in a Service'
-section for more details).
+to the type of `init` system being used, see the
+['Running systemd in a Service'](#5-running-systemd-in-a-service) section for more
+details).
 
 After deploying the single service application, you'll notice the following in
 the logs for the device (assuming our device's UUID is `1234567`):
@@ -360,11 +362,11 @@ Tue Oct  8 10:48:38 UTC 2019
 root@1234567:/# exit
 ```
 
-Now reboot the device and then SSH back into the service after the reboot:
+Now re-push that app and then SSH back into the service after it is recreated:
 
 ```shell
-$ balena device reboot 1234567
-$ balena ssh 8c295e3 main
+$ balena push SingleService
+$ balena ssh 1234567 main
 root@1234567:/# cat /data/datestamps
 Tue Oct  8 10:48:38 UTC 2019
 Tue Oct  8 10:52:44 UTC 2019
@@ -514,7 +516,8 @@ add the following after the `frontend` service definition:
 ```
 
 Push to the application again. Once the application has built and the device has
-downloaded the updates, prove that you can acquire the backend data:
+downloaded the updates, prove that you can acquire the backend data from your
+development machine:
 
 ```shell
 $ curl http://192.168.1.167:1234/data
@@ -581,17 +584,17 @@ service into the shared volume can be seen by the `backend` service:
 ```shell
 root@0987654:/usr/src/app# cat /backend-persistence/somedata
 Second volume
-root@0987654:/usr/src/app# echo 'Second volume' >> /backend-persistence/somedata
+root@0987654:/usr/src/app# echo 'Second volume 2' >> /backend-persistence/somedata
 root@0987654:/usr/src/app# exit
 ```
 
-Now perform a reboot of the device:
+Now re-push that application to the device:
 
 ```shell
-$ balena device reboot 0987654
+$ balena push MulticontainerServices
 ```
 
-Wait for the device to reboot, then SSH into the `frontend` container to verify
+Wait for the device to update, then SSH into the `frontend` container to verify
 that all the stored data from both services has correctly persisted:
 
 ```shell
@@ -600,7 +603,7 @@ root@0987654:/usr/src/app# cat /frontend-data/somedata
 First volume
 root@0987654:/usr/src/app# cat /backend-data/somedata
 Second volume
-Second volume
+Second volume 2
 root@0987654:/usr/src/app# exit
 ```
 
@@ -654,7 +657,7 @@ the `frontend` is exposed to the host and beyond.
 
 To do this, we're going to remove host network access from the `frontend`
 service to allow external incoming network traffic into it, as well as ensure
-only incoming requests from the same bridge (ie. the `frontend` service) are
+only incoming requests from the same bridge (i.e. the `frontend` service) are
 allowed into the `backend` service.
 
 Modify the services section of the `docker-compose.yml` file to the following:
@@ -703,7 +706,7 @@ $ balena push MulticontainerServices
 ```
 
 Let's try using the same endpoints as before to request some HTTP data from
-both the `frontend` and `backend` services:
+both the `frontend` and `backend` services from your development machine:
 
 ```shell
 $ curl http://192.168.1.167
@@ -752,7 +755,7 @@ balena supports the use of `systemd` within services, by either running as
 `privileged` containers, or via some carefully crafted capabilities.
 
 Change directory to the `systemd` directory in the root of this masterclass
-repository, eg:
+repository, e.g.:
 
 ```shell
 $ cd $BALENA_SERVICES_MASTERCLASS/systemd
@@ -1020,7 +1023,7 @@ Change the `printer` service definition to the following:
 This removes the privileged mode, but sets some extended access for the service,
 mainly:
 
-* Removing default resource limits and allow system administrations options
+* Removing default resource limits and allow system administration options
     to be used
 * The unconfining of the AppArmor kernel module, to allow `systemd` to run
     correctly
@@ -1168,7 +1171,7 @@ the dependencies required to build it. This results in a far smaller service
 image.
 
 Change directory to the `multi-stage` directory in the root of this masterclass
-repository, eg:
+repository, e.g.:
 
 ```shell
 $ cd $BALENA_SERVICES_MASTERCLASS/multi-stage
