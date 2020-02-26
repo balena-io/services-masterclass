@@ -23,6 +23,14 @@ This masterclass acts as an introduction to how both single service and
 multicontainer applications operate, as well as demonstrating some of their most
 common uses and some advanced techniques.
 
+In this masterclass, you will learn how to:
+
+* Build a single service
+* Persist data across application updates
+* Communicate between containers and the outside world
+* Run `systemd` inside your `balenalib` container
+* Reduce the image size for compiled code
+
 ## Hardware and Software Requirements
 
 It is assumed that the reader has access to the following:
