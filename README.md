@@ -740,9 +740,9 @@ one defined network, whereas others might be able to communicate in many).
 There's a good section on this in the Docker
 [networking guide](https://docs.docker.com/compose/networking/#specify-custom-networks).
 
-balena `docker-compose` manifests also allow the defining of IPAM bridge
-networks (see
-[here](https://docs.docker.com/compose/compose-file/compose-file-v2/#ipv4_address-ipv6_address))
+balena `docker-compose` manifests also allow the defining of IPAM
+bridge networks; see
+[here](https://docs.docker.com/compose/compose-file/compose-file-v2/#ipv4_address-ipv6_address)
 for more details, as well as the
 [`aliases`](https://docs.docker.com/compose/compose-file/compose-file-v2/#aliases)
 keyword for providing alias names for services (including FQDNs).
