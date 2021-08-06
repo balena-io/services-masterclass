@@ -1,3 +1,3 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
 
-CMD ["/bin/bash", "-c", "echo 'Single Service Application'; sleep 5"]
+CMD ["/bin/bash", "-c", "echo 'Single Service Fleet'; sleep 5"]
