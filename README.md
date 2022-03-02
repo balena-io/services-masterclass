@@ -179,7 +179,7 @@ masterclass repository, e.g.:
 $ cd $BALENA_SERVICES_MASTERCLASS/single-service-app
 ```
 
-Ensure you've created a new fleet (for example, 'SingleService')
+Ensure you've created a fleet (for example, 'SingleService')
 for your balenaFin (or alternative device). Download and provision a development
 device image for that fleet and flash it onto your device. If you haven't
 already done so, login to your account using balena CLI with `balena login` and
