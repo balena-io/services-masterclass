@@ -268,7 +268,7 @@ $ balena logs 1234567
 As you can see, the service is restarting every five seconds because the `CMD`
 instruction simply echoes some text to the console, sleeps for five seconds and
 then exits. The default restart policy for services in a balena app is
-`always` for single service app (see
+`always` for single service apps (see
 [here](https://docs.docker.com/compose/compose-file/compose-file-v2/#restart)
 for alternative restart policies for services in multicontainer apps).
 
