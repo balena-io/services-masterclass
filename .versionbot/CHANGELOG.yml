@@ -1,0 +1,227 @@
+- commits:
+    - subject: "patch: Create flowzone.yml"
+      hash: b666f780f12ae5f793f9c91865d188bf4e3b2f9e
+      body: ""
+      footer: {}
+      author: Vipul Gupta
+      nested: []
+  version: 1.0.20
+  title: ""
+  date: 2023-12-20T16:06:07.144Z
+- version: 1.0.19
+  date: 2022-03-07T16:20:39Z
+  commits:
+    - hash: c854fd390c464fb80336b2ef2ff375de9c3e3247
+      author: Matthew Yarmolinsky
+      footers:
+        change-type: patch
+        signed-off-by: Matthew Yarmolinsky <matthew-timothy@balena.io>
+      subject: Changed instances related to apps to `fleets` or `projects`
+      body: ""
+- version: 1.0.18
+  date: 2021-11-08T13:44:17Z
+  commits:
+    - hash: 13917c7939b0445fc1b1976b66747d9c4b7acd28
+      author: Kyle Harding
+      subject: "patch: Fix URL to balenaFin dev kit store page"
+      body: ""
+- version: 1.0.17
+  date: 2021-07-01T05:06:47Z
+  commits:
+    - hash: da33dfc73377bd2a31d476ae733562ddaf8829da
+      author: dfunckt
+      footers:
+        change-type: patch
+      subject: Delete .github directory
+      body: ""
+- version: 1.0.16
+  date: 2020-05-08T20:00:19Z
+  commits:
+    - hash: 6a15229654dab678d241153994041b8106d3ee18
+      author: Gareth Davies
+      footers:
+        change-type: patch
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      subject: Update CODEOWNERS
+      body: ""
+- version: 1.0.15
+  date: 2020-04-27T22:20:03Z
+  commits:
+    - hash: 97c766322c599dc4b1af56354f40ebfff98c4221
+      author: Hugh Brown
+      footers:
+        change-type: patch
+        signed-off-by: Hugh Brown <hugh@balena.io>
+      subject: Clarify paragraph on IPAM networks and the alias keyword
+      body: ""
+- version: 1.0.14
+  date: 2020-04-20T19:38:12Z
+  commits:
+    - hash: 15aaf13772ca028a167be96f3b1ba50f7622c139
+      author: Matthew McGinn
+      footers:
+        change-type: patch
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      subject: remove hedss as codeowner
+      body: ""
+- version: 1.0.13
+  date: 2020-02-26T18:07:58Z
+  commits:
+    - hash: bf2f1ccce334c6efae4e5c9b5734a4d60be49440
+      author: Matthew McGinn
+      footers:
+        change-type: patch
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      subject: "tl;dr: add some notes on learning targets"
+      body: ""
+- version: 1.0.12
+  date: 2020-02-26T00:27:19Z
+  commits:
+    - hash: f23f41e0701e06b70d5817c71281d39960930326
+      author: Matthew McGinn
+      footers:
+        change-type: patch
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      subject: numerous small nits after runthrough
+      body: ""
+- version: 1.0.11
+  date: 2020-02-21T18:57:42Z
+  commits:
+    - hash: 36e4eca975c22c0cff6257850ee7d7e6a60e8583
+      author: Josh Bowling
+      footers:
+        change-type: patch
+        signed-off-by: Josh Bowling <josh@balena.io>
+      subject: Improve systemd balena push command and fix yml path
+      body: ""
+- version: 1.0.10
+  date: 2020-02-21T04:51:09Z
+  commits:
+    - hash: 05b0037ac30c7519fc38de7b6f2ef5b796a72146
+      author: Josh Bowling
+      footers:
+        change-type: patch
+        signed-off-by: Josh Bowling <josh@balena.io>
+      subject: Fix endpoint name typo
+      body: ""
+- version: 1.0.9
+  date: 2020-02-21T02:27:21Z
+  commits:
+    - hash: 790dcd9264ab1ea882e75276842392dd0b1d128b
+      author: Josh Bowling
+      footers:
+        change-type: patch
+        signed-off-by: Josh Bowling <josh@balena.io>
+      subject: Add source download step to readme
+      body: ""
+- version: 1.0.8
+  date: 2020-02-12T19:54:31Z
+  commits:
+    - hash: 84a4805911519d22db80398815c52ac0f08fa1e9
+      author: Gareth Davies
+      footers:
+        change-type: patch
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      subject: "meta: Formatting for external docs"
+      body: ""
+- version: 1.0.7
+  date: 2020-01-23T16:09:32Z
+  commits:
+    - hash: cd91ca155e9cfc1d64b9039f63bfb88b9b456da3
+      author: Heds Simons
+      footers:
+        change-type: patch
+        signed-off-by: Heds Simons <heds@balena.io>
+      subject: "org: Change from `balena-io-projects` to `balena-io`"
+      body: ""
+- version: 1.0.6
+  date: 2020-01-18T00:02:38Z
+  commits:
+    - hash: fb3d465e0b2bffbbde4a65d269ce00ebfc9fff52
+      author: Matthew McGinn
+      footers:
+        change-type: patch
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      subject: minor spelling/formatting updates
+      body: ""
+- version: 1.0.5
+  date: 2019-11-22T10:16:40Z
+  commits:
+    - hash: d0a2b2cddf9f8ac3ee22793a6ddf6bcf13433f2d
+      author: Heds Simons
+      footers:
+        change-type: patch
+        signed-off-by: Heds Simons <heds@balena.io>
+      subject: "readme/resources: Correct grammar and typos, move resources"
+      body: ""
+- version: 1.0.4
+  date: 2019-11-21T13:44:58Z
+  commits:
+    - hash: de2180da74fa281b7b3c4cded57d16b88f318243
+      author: Federico Fissore
+      footers:
+        change-type: patch
+        signed-off-by: Federico Fissore <federico@fissore.org>
+      subject: Remove `console.log(data)` call from js snippet
+      body: ""
+    - hash: 910a9119b22dd13a169d93ce7ae85a8924354221
+      author: Federico Fissore
+      footers:
+        change-type: patch
+        signed-off-by: Federico Fissore <federico@fissore.org>
+      subject: Add missing `balena push` instructions
+      body: ""
+    - hash: 8e96732bc71f7888600e44f9f0a0ab1fbaf77aa0
+      author: Federico Fissore
+      footers:
+        change-type: patch
+        signed-off-by: Federico Fissore <federico@fissore.org>
+      subject: Fix typo
+      body: ""
+    - hash: 10aafeb2d6d805f72211641b76e4c92467264875
+      author: Federico Fissore
+      footers:
+        change-type: patch
+        signed-off-by: Federico Fissore <federico@fissore.org>
+      subject: "3.1 Multicontainer docker-compose Manifest: print new line after date"
+      body: Print new line after the date so that user prompt goes on a new line
+- version: 1.0.3
+  date: 2019-11-19T19:21:19Z
+  commits:
+    - hash: 517a50f51e8c27e55641f6242a7624f54c4ca96d
+      author: Gareth Davies
+      footers:
+        change-type: patch
+        signed-off-by: Gareth Davies gareth@balena.io
+      subject: "docs: Text cleanup"
+      body: ""
+- version: 1.0.2
+  date: 2019-11-15T21:00:31Z
+  commits:
+    - hash: 1513d265dc4997dcf61e3e27567b7122f2c248a4
+      author: Gareth Davies
+      footers:
+        change-type: patch
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      subject: "docs: Updating section heading"
+      body: ""
+- version: 1.0.1
+  date: 2019-10-30T12:31:20Z
+  commits:
+    - hash: de123333ef356af39312db6328e72c5d6e091a73
+      author: Matthew McGinn
+      footers:
+        change-type: patch
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      subject: "meta: add CODEOWNERS"
+      body: ""
+- version: 1.0.0
+  date: 2019-10-22T13:48:21Z
+  commits:
+    - hash: db1d6d4f56c1617de58f896b7ba5e5a0bd1e943c
+      author: Heds Simons
+      footers:
+        change-type: major
+        signed-off-by: Heds Simons <heds@balena.io>
+      subject: "masterclass: Initial PR for services masterclass"
+      body: ""
