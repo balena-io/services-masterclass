@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update balenaFin link"
+      hash: b33f0d8eebd018b6bff14f90a18ed9367ca7f1ea
+      body: ""
+      footer: {}
+      author: Vipul Gupta
+      nested: []
+  version: 1.0.21
+  title: ""
+  date: 2023-12-20T16:12:18.696Z
+- commits:
     - subject: "patch: Create flowzone.yml"
       hash: b666f780f12ae5f793f9c91865d188bf4e3b2f9e
       body: ""
