@@ -1,7 +1,10 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
+FROM debian:trixie-slim
 
 # Install build essential tools to include GCC
-RUN install_packages build-essential
+RUN apt update && \
+    apt install -y  build-essential && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Compile the executable from some C source
 WORKDIR /usr/src/app
