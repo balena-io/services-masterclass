@@ -172,11 +172,11 @@ repository, as we'll use this for the rest of the exercises, e.g.:
 $ export BALENA_SERVICES_MASTERCLASS=~/services-masterclass
 ```
 
-Now change directory to the `single-service-fleet` directory in the root of this
+Now change directory to the `single-service-app` directory in the root of this
 masterclass repository, e.g.:
 
 ```shell
-$ cd $BALENA_SERVICES_MASTERCLASS/single-service-fleet
+$ cd $BALENA_SERVICES_MASTERCLASS/single-service-app
 ```
 
 Ensure you've created a new named fleet (for example, 'SingleService')
@@ -364,7 +364,7 @@ then `balena push` to the fleet and wait for it to restart. Now SSH into the
 `main` service on the device:
 
 ```shell
-$ balena ssh 1234567 main
+$ balena device ssh 1234567 main
 root@1234567:/# cat /data/datestamps
 Tue Oct  8 10:48:38 UTC 2019
 root@1234567:/# exit
@@ -374,7 +374,7 @@ Now re-push that project and then SSH back into the service after it is recreate
 
 ```shell
 $ balena push SingleService
-$ balena ssh 1234567 main
+$ balena device ssh 1234567 main
 root@1234567:/# cat /data/datestamps
 Tue Oct  8 10:48:38 UTC 2019
 Tue Oct  8 10:52:44 UTC 2019
@@ -423,7 +423,7 @@ First change to the multicontainer part of the masterclass repository, and then
 push the code that exists there:
 
 ```shell
-$ cd $BALENA_SERVICES_MASTERCLASS/multicontainer-fleet
+$ cd $BALENA_SERVICES_MASTERCLASS/multicontainer-app
 $ balena push MulticontainerServices
 [Info]      Starting build for MulticontainerServices, user heds
 [Info]      Dashboard link: https://dashboard.balena-cloud.com/fleets/1234567/devices
@@ -491,8 +491,8 @@ $ balena push MulticontainerServices
 			             <'
 ```
 
-This will create an fleet with a single service that acts as a frontend,
-which allows an HTTP GET from the root of the device. Determine the IP address
+This will create a fleet with a single service that acts as a frontend,
+which allows a HTTP GET from the root of the device. Determine the IP address
 of the device, by doing:
 
 ```shell
@@ -514,7 +514,7 @@ when an HTTP GET is requested.
 
 We'll add another service which will act as a backend that supplies data to the
 frontend. The code for this already exists in the
-`$BALENA_SERVICES_MASTERCLASS/multicontainer-fleet/backend` directory, but is not used
+`$BALENA_SERVICES_MASTERCLASS/multicontainer-app/backend` directory, but is not used
 as the `docker-compose` manifest does not define another service that uses it.
 To do so, we'll add a new service to the manifest and alter the frontend code
 slightly to try and use the backend. In the `docker-compose.yml` manifest,
@@ -584,7 +584,7 @@ Once built and the device has downloaded the updated project, SSH into the
 `frontend` service:
 
 ```shell
-$ balena ssh 0987654 frontend
+$ balena device ssh 0987654 frontend
 root@0987654:/usr/src/app# echo 'First volume' > /frontend-data/somedata
 root@0987654:/usr/src/app# echo 'Second volume' > /backend-data/somedata
 root@0987654:/usr/src/app# exit
@@ -610,7 +610,7 @@ Wait for the device to update, then SSH into the `frontend` container to verify
 that all the stored data from both services has correctly persisted:
 
 ```shell
-$ balena ssh 0987654 frontend
+$ balena device ssh 0987654 frontend
 root@0987654:/usr/src/app# cat /frontend-data/somedata
 First volume
 root@0987654:/usr/src/app# cat /backend-data/somedata
@@ -692,7 +692,7 @@ services on the same bridge have access to all other services ports, but for our
 purposes it reinforces the idea of this behavior.
 
 Now add the following to the
-`$BALENA_SERVICES_MASTERCLASS/multicontainer-fleet/frontend/index.js` file:
+`$BALENA_SERVICES_MASTERCLASS/multicontainer-app/frontend/index.js` file:
 
 ```javascript
 app.get('/backend_data', (_req, res) => {
@@ -984,7 +984,7 @@ SSH into the service, and then run `systemctl` to see all of the services
 currently running:
 
 ```shell
-$ balena ssh 3456789 printer
+$ balena device ssh 3456789 printer
 $ root@dffe197d303e:/# systemctl
 UNIT                               LOAD   ACTIVE     SUB       DESCRIPTION
 proc-sys-fs-binfmt_misc.automount  loaded active     waiting   Arbitrary Executable File Formats File System Automount Point
@@ -1112,7 +1112,7 @@ A quick SSH into the `printer` service will show that `systemd` is still running
 as the init process:
 
 ```shell
-$ balena ssh 3456789 printer
+$ balena device ssh 3456789 printer
 $ root@dffe197d303e:/# systemctl
 UNIT                               LOAD   ACTIVE     SUB       DESCRIPTION
 proc-sys-fs-binfmt_misc.automount  loaded active     waiting   Arbitrary Executable File Formats File System Automount Point
@@ -1566,7 +1566,7 @@ the device. We want to see how big our service image, which is just printing
 `Hello, world!` and then exiting, is:
 
 ```shell
-$ balena ssh 1234567
+$ balena device ssh 1234567
 root@1234567:~# balena images | grep registry2
 registry2.balena-cloud.com/v2/d84f78e591f230e4b5c9f20b00123456   <none>              2845b9f1a3fe        13 minutes ago      289MB
 ```
@@ -1701,7 +1701,7 @@ Now wait for the updated project to download and restart. Then SSH into
 the device again:
 
 ```shell
-$ balena ssh 1234567
+$ balena device ssh 1234567
 root@1234567:~# balena images | grep registry2
 registry2.balena-cloud.com/v2/9786f6bfe803b9ae6643a54a52123457   <none>              5d0de84fe0f7        2 minutes ago       39.9MB
 ```
