@@ -1,1 +1,25 @@
+FROM node:lts-trixie-slim
 
+# Install both DBus and systemd support
+RUN apt update && \
+    apt install -y dbus systemd && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Mask services which do not make sense to run in a service container
+RUN systemctl mask \
+    dev-hugepages.mount \
+    sys-fs-fuse-connections.mount \
+    sys-kernel-config.mount \
+    display-manager.service \
+    getty@.service \
+    systemd-logind.service \
+    systemd-remount-fs.service \
+    getty.target \
+    graphical.target
+
+RUN systemctl set-default multi-user.target
+
+COPY entry.sh /usr/bin
+STOPSIGNAL 37
+ENTRYPOINT ["/usr/bin/entry.sh"]
