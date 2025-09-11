@@ -1,4 +1,18 @@
 - commits:
+    - subject: update containers base images
+      hash: 827d11a29c7279f049430fc3a10c1084898cd939
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 1.0.22
+  title: ""
+  date: 2025-09-11T18:02:46.398Z
+- commits:
     - subject: "patch: Update balenaFin link"
       hash: b33f0d8eebd018b6bff14f90a18ed9367ca7f1ea
       body: ""
