@@ -172,11 +172,11 @@ repository, as we'll use this for the rest of the exercises, e.g.:
 $ export BALENA_SERVICES_MASTERCLASS=~/services-masterclass
 ```
 
-Now change directory to the `single-service-fleet` directory in the root of this
+Now change directory to the `single-service-app` directory in the root of this
 masterclass repository, e.g.:
 
 ```shell
-$ cd $BALENA_SERVICES_MASTERCLASS/single-service-fleet
+$ cd $BALENA_SERVICES_MASTERCLASS/single-service-app
 ```
 
 Ensure you've created a new named fleet (for example, 'SingleService')
