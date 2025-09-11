@@ -423,7 +423,7 @@ First change to the multicontainer part of the masterclass repository, and then
 push the code that exists there:
 
 ```shell
-$ cd $BALENA_SERVICES_MASTERCLASS/multicontainer-fleet
+$ cd $BALENA_SERVICES_MASTERCLASS/multicontainer-app
 $ balena push MulticontainerServices
 [Info]      Starting build for MulticontainerServices, user heds
 [Info]      Dashboard link: https://dashboard.balena-cloud.com/fleets/1234567/devices
@@ -514,7 +514,7 @@ when an HTTP GET is requested.
 
 We'll add another service which will act as a backend that supplies data to the
 frontend. The code for this already exists in the
-`$BALENA_SERVICES_MASTERCLASS/multicontainer-fleet/backend` directory, but is not used
+`$BALENA_SERVICES_MASTERCLASS/multicontainer-app/backend` directory, but is not used
 as the `docker-compose` manifest does not define another service that uses it.
 To do so, we'll add a new service to the manifest and alter the frontend code
 slightly to try and use the backend. In the `docker-compose.yml` manifest,
@@ -692,7 +692,7 @@ services on the same bridge have access to all other services ports, but for our
 purposes it reinforces the idea of this behavior.
 
 Now add the following to the
-`$BALENA_SERVICES_MASTERCLASS/multicontainer-fleet/frontend/index.js` file:
+`$BALENA_SERVICES_MASTERCLASS/multicontainer-app/frontend/index.js` file:
 
 ```javascript
 app.get('/backend_data', (_req, res) => {
