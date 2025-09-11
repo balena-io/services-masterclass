@@ -491,8 +491,8 @@ $ balena push MulticontainerServices
 			             <'
 ```
 
-This will create an fleet with a single service that acts as a frontend,
-which allows an HTTP GET from the root of the device. Determine the IP address
+This will create a fleet with a single service that acts as a frontend,
+which allows a HTTP GET from the root of the device. Determine the IP address
 of the device, by doing:
 
 ```shell
