@@ -1,4 +1,16 @@
 - commits:
+    - subject: Fix link to balena-supervisor issue in README
+      hash: 8e2a4a8d4c0abf384038bca763422ff72ff6bfae
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Matthew Yarmolinsky
+      nested: []
+  version: 1.0.23
+  title: ""
+  date: 2026-05-07T14:10:56.791Z
+- commits:
     - subject: update containers base images
       hash: 827d11a29c7279f049430fc3a10c1084898cd939
       body: ""
