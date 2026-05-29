@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update README with services masterclass reference
+      hash: 1a9ed1f7d7f2ee99394e8e879fc8981812022f4d
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Matthew Yarmolinsky
+      nested: []
+  version: 1.0.24
+  title: ""
+  date: 2026-05-29T12:58:00.035Z
+- commits:
     - subject: Fix link to balena-supervisor issue in README
       hash: 8e2a4a8d4c0abf384038bca763422ff72ff6bfae
       body: ""
